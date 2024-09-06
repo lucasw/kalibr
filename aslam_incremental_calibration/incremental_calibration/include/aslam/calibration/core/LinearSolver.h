@@ -38,7 +38,7 @@
 
 #include "aslam/calibration/core/LinearSolverOptions.h"
 
-template <typename Entry> struct SuiteSparseQR_factorization;
+// template <typename Entry> struct SuiteSparseQR_factorization;
 
 namespace sm {
 
