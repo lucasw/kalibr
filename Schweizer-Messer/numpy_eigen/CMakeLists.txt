@@ -1,11 +1,16 @@
-cmake_minimum_required(VERSION 3.0.2)
+cmake_minimum_required(VERSION 3.12.0)
 project(numpy_eigen)
 
-set(CMAKE_CXX_STANDARD 14)
-
 find_package(catkin REQUIRED COMPONENTS python_module)
+
 find_package(Boost REQUIRED COMPONENTS system)
 find_package(Eigen3 REQUIRED)
+
+# TODO(lucasw) can't get numpy includes to work, so adding it manually
+include_directories(/usr/lib/python3/dist-packages/numpy/core/include)
+find_package(Python3 REQUIRED COMPONENTS Development NumPy)
+include_directories(${Python_INCLUDE_DIRS} ${Python3_NumPy_INCLUDE_DIRS})
+message(WARNING "################# python include ${Python_LIBRARIES}, ${Python_INCLUDE_DIRS}, ${Python3_NumPy_INCLUDE_DIRS}")
 
 catkin_python_setup()
 
